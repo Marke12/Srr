@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Galería - San Roke Racing Club</title>
+  <link rel="stylesheet" href="css/style2.css" />
+  <style>
+    /* Estilos para la galería miniatura */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    .gallery-grid img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 8px;
+      box-shadow: 0 0 8px #b22222aa;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .gallery-grid img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #b22222;
+    }
+
+    /* Estilos del modal (pantalla de zoom) */
+    #modal {
+      display: none; /* oculto por defecto */
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.85);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    #modal img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #b22222;
+      cursor: zoom-out;
+      transition: transform 0.3s ease;
+    }
+
+    /* Botón volver */
+    #backBtn {
+      display: block;
+      margin: 1rem auto;
+      background-color: #b22222;
+      color: white;
+      border: none;
+      padding: 0.5rem 1.2rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    #backBtn:hover {
+      background-color: #8b1a1a;
+    }
+  </style>
+</head>
+<body>
+
+<main>
+  <button id="backBtn">Volver</button>
+
+  <h1 style="text-align:center; color:#b22222; margin-top:2rem;">Galería</h1>
+
+  <div class="gallery-grid">
+    <!-- Imágenes con evento para abrir modal -->
+    <img src="sr/_MG_2418.jpg" alt="Foto 1" />
+    <img src="sr/_MG_2424.jpg" alt="Foto 2" />
+    <img src="sr/_MG_2425.jpg" alt="Foto 3" />
+    <img src="sr/_MG_2426.jpg" alt="Foto 4" />
+    <img src="sr/_MG_2427.jpg" alt="Foto 5" />
+    <img src="sr/_MG_2428.jpg" alt="Foto 6" />
+    <img src="sr/_MG_2429.JPG" alt="Foto 7" />
+    <img src="sr/_MG_2430.jpg" alt="Foto 8" />
+    <img src="sr/_MG_2431.jpg" alt="Foto 10" />
+    <img src="sr/_MG_2432.jpg" alt="Foto 11" />
+    <img src="sr/_MG_2435.jpg" alt="Foto 12" />
+    <img src="sr/_MG_2454.jpg" alt="Foto 13" />
+    <img src="sr/_MG_2455.jpg" alt="Foto 14" />
+    <img src="sr/_MG_2456.jpg" alt="Foto 15" />
+    <img src="sr/_MG_2457.jpg" alt="Foto 16" />
+    <img src="sr/_MG_2458.jpg" alt="Foto 17" />
+    <img src="sr/_MG_2478.jpg" alt="Foto 18" />
+    <img src="sr/_MG_2481.jpg" alt="Foto 19" />
+    <img src="sr/_MG_2490.jpg" alt="Foto 20" />
+    <img src="sr/_MG_2494.jpg" alt="Foto 21" />
+    <img src="sr/_MG_2541.jpg" alt="Foto 22" />
+    <img src="sr/_MG_2542.jpg" alt="Foto 23" />
+    <img src="sr/_MG_2582.jpg" alt="Foto 24" />
+    <img src="sr/_MG_2641.jpg" alt="Foto 25" />
+    <img src="sr/_MG_2724.jpg" alt="Foto 26" />
+  
+  </div>
+</main>
+
+<!-- Modal para imagen ampliada -->
+<div id="modal">
+  <img src="" alt="Imagen ampliada" />
+</div>
+
+<footer>
+  <p>&copy; 2025 San Roke Racing Club. Todos los derechos reservados.</p>
+</footer>
+
+<script>
+  const modal = document.getElementById('modal');
+  const modalImg = modal.querySelector('img');
+  const galleryImages = document.querySelectorAll('.gallery-grid img');
+
+  galleryImages.forEach(img => {
+    img.addEventListener('click', () => {
+      modal.style.display = 'flex';
+      modalImg.src = img.src;
+      modalImg.alt = img.alt;
+    });
+  });
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal || e.target === modalImg) {
+      modal.style.display = 'none';
+      modalImg.src = '';
+      modalImg.alt = '';
+    }
+  });
+
+  // Función botón volver
+  document.getElementById('backBtn').addEventListener('click', () => {
+    history.back();
+  });
+</script>
+
+</body>
+</html>
